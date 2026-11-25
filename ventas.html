@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ventas · Mostrador de Farmacia</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="moderno">
+<div id="nav"></div>
+<main>
+  <div class="hero">
+    <div><h1>Ventas</h1><p>Atendé a los pacientes y seguí cada venta paso a paso.</p></div>
+    <div class="hero-acc">
+      <button class="ghost" onclick="verListado()">📋 Listado de medicamentos</button>
+      <button class="btn-nueva" onclick="nuevaAtencion()"><span class="ico">➕</span> Nueva atención</button>
+    </div>
+  </div>
+
+  <div id="msg" class="aviso"></div>
+
+  <div class="tabs">
+    <button id="tabCurso" class="tab activo" onclick="cambiarTab('curso')">🩺 Ventas en curso <span class="cnt" id="cntCurso">0</span></button>
+    <button id="tabHist" class="tab" onclick="cambiarTab('hist')">🧾 Historial <span class="cnt" id="cntHist">0</span></button>
+  </div>
+
+  <section id="vistaCurso"><div id="cards" class="cards"></div></section>
+  <section id="vistaHist" hidden></section>
+</main>
+
+<!-- Ventana: nueva / modificar atención -->
+<div class="modal" id="modalForm" hidden><div class="modal-box">
+  <button class="x" onclick="cerrar('modalForm')">✕</button>
+  <h2 id="tituloForm" style="border:0;margin-top:0">🩺 Nueva atención</h2>
+  <form id="form">
+    <div class="seccion">👤 Datos del paciente</div>
+    <div class="grid2">
+      <label>Paciente<input id="paciente" required placeholder="Nombre y apellido"></label>
+      <label>DNI<input id="dni" required inputmode="numeric" placeholder="Sin puntos"></label>
+      <label>Obra social / prepaga<input id="obraSocial" required></label>
+      <label>N° de receta<input id="receta" required></label>
+    </div>
+    <div class="seccion">💊 Medicamentos de la receta</div>
+    <div class="agregar">
+      <label style="flex:1;min-width:180px">Medicamento<select id="selMed"></select></label>
+      <label>Cantidad<input id="cantidad" type="number" min="1" value="1" style="width:90px"></label>
+      <button type="button" class="sec" onclick="agregarItem()">＋ Agregar</button>
+    </div>
+    <ul class="chips" id="listaItems"></ul>
+    <div class="total-form"><span>Total</span><b id="totalItems">$ 0,00</b></div>
+    <button id="btnGuardar" type="submit" class="btn-main">✅ Guardar atención</button>
+  </form>
+</div></div>
+
+<!-- Ventana: ticket, detalle y listado -->
+<div class="modal" id="modalInfo" hidden><div class="modal-box">
+  <button class="x" onclick="cerrar('modalInfo')">✕</button>
+  <div id="infoBody"></div>
+</div></div>
+
+<script src="js/store.js"></script>
+<script src="js/ventas.js"></script>
+</body>
+</html>

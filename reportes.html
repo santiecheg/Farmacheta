@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reportes · Mostrador de Farmacia</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="nav"></div>
+<main>
+<h1>Reportes y listados</h1>
+<h2>Ventas del día</h2><p id="resumenDia"><b></b></p>
+<table><tr><th>N°</th><th>Paciente</th><th>Detalle</th><th>Total</th><th>Estado</th></tr><tbody id="tablaDia"></tbody></table>
+<h2>Rotación de productos</h2>
+<table><tr><th>Medicamento</th><th>Vendidos</th><th>Stock actual</th><th>Rotación</th></tr><tbody id="tablaRot"></tbody></table>
+</main>
+<script src="js/store.js"></script>
+<script src="js/reportes.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pedidos · Mostrador de Farmacia</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="nav"></div>
+<main>
+<h1>Pedido a droguería</h1>
+<p class="nota">En el sistema real este pedido se generaría automáticamente cada mañana.</p>
+<button onclick="generarPedido()">Generar pedido del día</button><div id="msg" class="aviso warn"></div>
+<h2>Último pedido</h2><div id="ultimo"></div>
+<h2>Historial</h2><div id="historial"></div>
+</main>
+<script src="js/store.js"></script>
+<script src="js/pedidos.js"></script>
+</body>
+</html>
