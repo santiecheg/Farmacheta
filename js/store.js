@@ -30,10 +30,15 @@ const Store = {
     const e = this.estadoStock(m);
     return `<span class="badge ${e === 'OK' ? 'ok' : e === 'BAJO' ? 'warn' : 'err'}">${e}</span>`;
   },
-  renderNav(activa) { // inyecta la barra de navegación
-    const links = [['index', 'Inicio'], ['ventas', 'Ventas'], ['stock', 'Stock'], ['reportes', 'Reportes'], ['pedidos', 'Pedidos']];
-    document.getElementById('nav').innerHTML = '<nav>' + links.map(([p, t]) =>
-      `<a href="${p}.html" class="${p === activa ? 'activo' : ''}">${t}</a>`).join('') + '</nav>';
+  renderNav(activa) { // inyecta barra lateral + barra superior
+    const links = [['index', '🏠', 'Inicio'], ['ventas', '🧾', 'Ventas'], ['stock', '💊', 'Stock'], ['reportes', '📊', 'Reportes'], ['pedidos', '🚚', 'Pedidos']];
+    const titulo = links.find(l => l[0] === activa)[2];
+    document.getElementById('nav').innerHTML =
+      `<aside class="side"><div class="marca">farmacheta<small>TU FARMACIA, MÁS CERCA</small></div><div class="side-sec">PRINCIPAL</div>` +
+      links.map(([p, i, t]) => `<a href="${p}.html" class="${p === activa ? 'activo' : ''}"><span>${i}</span>${t}</a>`).join('') +
+      `<div class="side-pie"><div class="caja">● Mostrador abierto<small>Prototipo con datos de ejemplo</small></div><span>Farmacheta · v1.0</span></div></aside>
+      <header class="top"><div><b>Sucursal principal</b><small>Mostrador de farmacia / ${titulo}</small></div>
+      <div class="top-der"><span class="pill">● En línea</span><div class="user"><b>Farmacéutico</b><small>Mostrador 01</small></div></div></header>`;
   },
   seed() { // datos de ejemplo, solo si no hay nada cargado
     if (sessionStorage.getItem('medicamentos')) return;

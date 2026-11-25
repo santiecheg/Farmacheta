@@ -4,7 +4,8 @@ const meds = Store.getAll('medicamentos'), ventas = Store.getAll('ventas'), pedi
 const delDia = ventas.filter(v => v.fecha === Store.hoy() && v.estadoVenta !== 'anulada');
 const pendientes = ventas.filter(v => v.estadoValidacion === 'pendiente' && v.estadoVenta !== 'anulada');
 const ultimo = pedidos[pedidos.length - 1];
-const kpi = (valor, texto) => `<div class="kpi"><b>${valor}</b><span>${texto}</span></div>`;
+const ICONOS = ['🧾', '⏳', '⚠️', '⛔', '🚚']; let nIco = 0;
+const kpi = (valor, texto) => `<div class="kpi"><div class="kico">${ICONOS[nIco++]}</div><b>${valor}</b><span>${texto}</span></div>`;
 document.getElementById('kpis').innerHTML =
   kpi(delDia.length + ' · ' + Store.formatMoney(delDia.reduce((s, v) => s + v.total, 0)), 'Ventas del día') +
   kpi(pendientes.length, 'Pendientes de validación') +
